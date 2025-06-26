@@ -26,7 +26,7 @@ Intelli-ScrAIb is an AI-driven article generation and query answering platform t
 
 ### Clone the Repository:
 ```
-git clone https://github.com/PoojithaKallagunta/Intelli-ScrAIb.git
+git clone https://github.com/PoojithaKallagunta/Intelli-ScrAIb_Article-Generator.git
 ```
 
 ---
