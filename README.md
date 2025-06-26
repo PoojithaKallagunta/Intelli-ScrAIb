@@ -26,7 +26,7 @@ Intelli-ScrAIb is an AI-driven article generation and query answering platform t
 
 ### Clone the Repository:
 ```
-git clone https://github.com/PoojithaKallagunta/Hackathon-Project_Zapcom.git
+git clone https://github.com/PoojithaKallagunta/Intelli-ScrAIb.git
 ```
 
 ---
@@ -49,24 +49,23 @@ Intelli-ScrAIb/
 │
 ├── static/
 │ └── css/
-│ └── output.css # Tailwind compiled CSS
+│ └── output.css
 │
 ├── templates/
-│ ├── index.html # Main UI interface
-│ ├── about.html # About the platform
-│ ├── contact.html # Contact information
-│ ├── prompts.html # List of AI writing prompt categories
+│ ├── index.html 
+│ ├── about.html
+│ ├── contact.html 
+│ ├── prompts.html 
 │
-├── main.py # Flask backend and API logic
-├── secret.env # Environment file for Gemini API key
-├── README.md # Project documentation
+├── main.py 
+├── secret.env 
+├── README.md 
 
 ```
 
 ## 6. Project Structure Description
 
--**`static/`**  
-  Contains the Tailwind CSS styles used for styling the UI.
+-**`static/`**    Contains the Tailwind CSS styles used for styling the UI.
 
 -**`templates/`**  
   All HTML UI pages rendered by Flask. Includes pages for article generation, about, prompts, and contact.
