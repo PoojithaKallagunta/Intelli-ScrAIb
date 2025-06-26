@@ -25,7 +25,9 @@ Intelli-ScrAIb is an AI-driven article generation and query answering platform t
 ## 3. Project Setup
 
 ### Clone the Repository:
-git clone https://github.com/YourUsername/Intelli-ScrAIb.git
+```
+git clone https://github.com/PoojithaKallagunta/Hackathon-Project_Zapcom.git
+```
 
 ---
 
@@ -42,6 +44,7 @@ GOOGLE_API_KEY=your_gemini_api_key_here
 
 ## 5. Directory Structure
 
+```
 Intelli-ScrAIb/
 │
 ├── static/
@@ -58,36 +61,35 @@ Intelli-ScrAIb/
 ├── secret.env # Environment file for Gemini API key
 ├── README.md # Project documentation
 
-
----
+```
 
 ## 6. Project Structure Description
 
-- **`static/`**  
+-**`static/`**  
   Contains the Tailwind CSS styles used for styling the UI.
 
-- **`templates/`**  
+-**`templates/`**  
   All HTML UI pages rendered by Flask. Includes pages for article generation, about, prompts, and contact.
 
-- **`index.html`**  
+-**`index.html`**  
   Main landing page where the user provides prompt inputs and interacts with the AI.
 
-- **`about.html`**  
+-**`about.html`**  
   Provides a short description about the project, its purpose, and its vision.
 
-- **`contact.html`**  
+-**`contact.html`**  
   Displays email and mobile number to reach the development team.
 
-- **`prompts.html`**  
+-**`prompts.html`**  
   Lists suggested categories and prompt formats for article generation.
 
-- **`main.py`**  
+-**`main.py`**  
   Backend logic to serve HTML, handle article generation via Gemini model, and answer queries using context-aware LangChain prompts.
 
-- **`secret.env`**  
+-**`secret.env`**  
   Stores the Google Gemini API key securely for backend access.
 
----
+```
 
 ## 7. API Endpoints
 
@@ -118,4 +120,4 @@ From there:
 4. Ask contextual follow-up questions via **Ask** button under “Ask Questions”.
 5. View responses, or clear the chat with **Clear Chat**.
 
----
+```
