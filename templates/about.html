@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="./static/css/output.css">
+    <style>
+        .about-container {
+            background: white;
+            color: black;
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(78, 73, 73, 0.15);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: -70px;
+        }
+
+        .about-content h1 {
+            font-size: large;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        
+        .footer {
+            margin-top: 150px;
+            background-color: black;
+            color: white;
+            padding: 40px 20px;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-left: 300px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin: 10px;
+        }
+
+        .footer-column h1 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .footer-column p, .footer-column a {
+            font-size: 14px;
+            color: gray;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .footer-column a:hover {
+            color: yellow;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid gray;
+            padding-top: 10px;
+            margin-top: 20px;
+        }
+
+        .footer-logo {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .footer-right img {
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    
+    <nav class="bg-black">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex-shrink-0">
+                    <a href="/" class="text-white font-bold">Intelli-ScrAIb</a>
+                </div>
+                <div class="hidden md:flex">
+                    <a href="/" class="text-white ml-4">Home</a>
+                    <a href="/about" class="text-white ml-4">About</a>
+                    <a href="/prompts" class="text-white ml-4">Prompts</a>
+                    <a href="/contact" class="text-white ml-4">Contact Us</a>
+                </div>
+                <div class="md:hidden">
+                    <button type="button" class="text-white focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="about-container">
+        <div class="about-content">
+            <h1>About Intelli-ScrAIb</h1>
+            <p class="mt-4 text-lg">
+                Intelli-ScrAIb is an AI-powered article generation platform that enables users to create high-quality content 
+                effortlessly. Our mission is to simplify content creation by leveraging cutting-edge AI technology.
+            </p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            
+            <div class="footer-column">
+                <h1>Links</h1>
+                <a href="/about">About Us</a>
+                <a href="/contact">Contact Us</a>
+                <a href="/prompts">Prompts</a>
+            </div>
+
+            
+            <div class="footer-column">
+                <h1>Features</h1>
+                <a href="/">AI Article Writer</a>
+                <a href="/">Blog Generator</a>
+                <a href="/">SEO Optimization</a>
+                <a href="/">Content Planner</a>
+            </div>
+
+            
+            <div class="footer-column">
+                <h1>Resources</h1>
+                <a href="/">Case Studies</a>
+                <a href="/">Blogs</a>
+                <a href="/">Privacy Policy</a>
+                <a href="/">Terms of Service</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-logo">Intelli-ScrAIb</div>
+            <div class="footer-right">
+                <p>© 2024 IntelliScrAIb. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

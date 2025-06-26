@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./static/css/output.css" />
+  <title>AI Content Generator</title>
+  <style>
+    .about-container {
+      background: linear-gradient(to right, #1e3c72, #2a5298);
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+    }
+    .about-content {
+      max-width: 800px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    .footer {
+      margin-top: 100px;
+      background-color: black;
+      color: white;
+      padding: 40px 20px;
+    }
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-column {
+      flex: 1;
+      min-width: 200px;
+      margin: 20px;
+    }
+    .footer-column h1 {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .footer-column p,
+    .footer-column a {
+      font-size: 14px;
+      color: gray;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 5px;
+    }
+    .footer-column a:hover {
+      color: yellow;
+    }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid gray;
+      padding-top: 10px;
+      margin-top: 20px;
+    }
+    .footer-logo {
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .footer-right img {
+      height: 40px;
+    }
+  </style>
+</head>
+<body>
+  <nav class="bg-black">
+    <div class="container mx-auto px-4">
+      <div class="flex justify-between items-center py-4">
+        <div class="flex-shrink-0">
+          <a href="#" class="text-white font-bold">Intelli-ScrAIb</a>
+        </div>
+        <div class="hidden md:flex">
+          <a href="#" class="text-white ml-4">Home</a>
+          <a href="/about" class="text-white ml-4">About</a>
+          <a href="/prompts" class="text-white ml-4">Prompts</a>
+          <a href="/contact" class="text-white ml-4">Contact Us</a>
+        </div>
+        <div class="md:hidden">
+          <button type="button" class="text-white focus:outline-none">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                 xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mx-auto my-4 px-4 md:px-0">
+    <h1 class="text-xl font-bold text-gray-900">AI powered Intelligent Article Generator</h1>
+
+    <div class="border p-2 w-full mt-1 flex items-center">
+      <textarea id="topicInput" class="border my-1 p-2 w-full"
+                placeholder="Enter the topic you want to generate an article about"></textarea>
+      <button id="voiceSearchBtn"
+              class="bg-black text-white rounded-full w-12 h-12 flex justify-center items-center shadow-md transition-transform duration-200 hover:scale-110 hover:shadow-lg active:scale-95 active:shadow-sm">
+        🎤 Prompt
+      </button>
+    </div>
+
+    <div class="my-2">
+      <label for="toneSelect" class="text-sm text-gray-700">Tone</label>
+      <select id="toneSelect" class="border p-2 w-full mt-1">
+        <option value="informative">Informative</option>
+        <option value="professional">Professional</option>
+        <option value="casual">Casual</option>
+        <option value="persuasive">Persuasive</option>
+      </select>
+    </div>
+
+    <div class="my-2">
+      <label for="audienceSelect" class="text-sm text-gray-700">Audience</label>
+      <select id="audienceSelect" class="border p-2 w-full mt-1">
+        <option value="general">General</option>
+        <option value="students">Students</option>
+        <option value="professionals">Professionals</option>
+        <option value="academicians">Academicians</option>
+      </select>
+    </div>
+
+    <div class="my-2">
+      <label for="lengthSelect" class="text-sm text-gray-700">Length</label>
+      <select id="lengthSelect" class="border p-2 w-full mt-1">
+        <option value="concise">Concise</option>
+        <option value="brief">Brief</option>
+        <option value="elaborate">Elaborate</option>
+      </select>
+    </div>
+
+    <button id="submitBtn" class="bg-black text-white px-4 py-2 my-1 rounded">Generate Article</button>
+
+    <div id="content" class="bg-gray-200 p-2 my-4">Your content will show up here</div>
+
+    <h2 class="text-lg font-bold text-gray-900 mt-4">Ask Questions</h2>
+    <div id="querySection">
+      <textarea id="queryInput" class="border p-2 w-full mt-1"
+                placeholder="Ask a question about the article..."></textarea>
+      <button id="queryBtn" class="bg-black text-white px-4 py-2 mt-2 rounded">Ask</button>
+      <button id="clearChatBtn" class="bg-black text-white px-4 py-2 mt-2 rounded hidden">Clear Chat</button>
+    </div>
+    <div id="queryResponses" class="bg-gray-100 p-2 my-4"></div>
+  </div>
+
+  <script>
+    const formatContent = (text) => {
+      return text
+        .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+        .replace(/\*(.*?)\*/g, "<em>$1</em>")
+        .replace(/\n/g, "<br>");
+    };
+
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recognition.lang = "en-US";
+
+    document.querySelector("#voiceSearchBtn").addEventListener("click", () => {
+      recognition.start();
+    });
+
+    recognition.addEventListener("result", (event) => {
+      document.querySelector("#topicInput").value = event.results[0][0].transcript;
+    });
+
+    window.addEventListener("load", () => {
+      document.querySelector("#topicInput").value = sessionStorage.getItem("topicInput") || "";
+      document.querySelector("#toneSelect").value = sessionStorage.getItem("toneSelect") || "informative";
+      document.querySelector("#audienceSelect").value = sessionStorage.getItem("audienceSelect") || "general";
+      document.querySelector("#lengthSelect").value = sessionStorage.getItem("lengthSelect") || "concise";
+
+      const savedContent = sessionStorage.getItem("generatedArticle");
+      document.querySelector("#content").innerHTML = savedContent || 'Your content will show up here';
+
+      const queryResponses = document.querySelector("#queryResponses");
+      let chatHistory = JSON.parse(sessionStorage.getItem("queryResponses")) || [];
+      chatHistory = chatHistory.slice(-15);
+      sessionStorage.setItem("queryResponses", JSON.stringify(chatHistory));
+      queryResponses.innerHTML = chatHistory.join("");
+      if (chatHistory.length > 0) document.querySelector("#clearChatBtn").classList.remove("hidden");
+    });
+
+    document.querySelector("#submitBtn").addEventListener("click", async () => {
+        const prompt = document.querySelector("#topicInput").value.trim();
+  const tone = document.querySelector("#toneSelect").value;
+  const audience = document.querySelector("#audienceSelect").value;
+  const length = document.querySelector("#lengthSelect").value;
+  const contentDisplay = document.querySelector("#content");
+  const queryResponses = document.querySelector("#queryResponses");
+  const clearChatBtn = document.querySelector("#clearChatBtn");
+
+  if (!prompt) {
+    contentDisplay.innerHTML = '<p style="color: red;">Please enter a valid topic!</p>';
+    return;
+  }
+
+  // Save preferences
+  sessionStorage.setItem("topicInput", prompt);
+  sessionStorage.setItem("toneSelect", tone);
+  sessionStorage.setItem("audienceSelect", audience);
+  sessionStorage.setItem("lengthSelect", length);
+
+  // Clear old query history when new topic is searched
+  sessionStorage.removeItem("queryResponses");
+  queryResponses.innerHTML = '';
+  clearChatBtn.classList.add("hidden");
+
+  contentDisplay.innerHTML = "<p style='color: gray;'>Generating content...</p>";
+
+  const response = await fetch("/generate", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ prompt, tone, audience, length }),
+    });
+    const data = await response.json();
+    const formatted = formatContent(data.output);
+    contentDisplay.innerHTML = formatted;
+    sessionStorage.setItem("generatedArticle", formatted);
+   });
+
+    document.querySelector("#queryBtn").addEventListener("click", async () => {
+      const queryInput = document.querySelector("#queryInput");
+      const query = queryInput.value.trim();
+      if (!query) return;
+
+      const queryResponses = document.querySelector("#queryResponses");
+      const responseDiv = document.createElement("div");
+      responseDiv.innerHTML = `<p><strong>You:</strong> ${query}</p><p><em>Thinking...</em></p>`;
+      queryResponses.appendChild(responseDiv);
+      queryInput.value = "";
+
+      const generatedContent = document.querySelector("#content").innerText.trim();
+
+      const response = await fetch("/ask_query", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query, generated_content: generatedContent }),
+      });
+
+      const data = await response.json();
+      responseDiv.innerHTML = `<p><strong>You:</strong> ${query}</p><p><strong>Intelli-ScrAIb:</strong> ${formatContent(data.answer)}</p>`;
+      document.querySelector("#clearChatBtn").classList.remove("hidden");
+
+      let chatHistory = JSON.parse(sessionStorage.getItem("queryResponses")) || [];
+      chatHistory.push(responseDiv.outerHTML);
+      if (chatHistory.length > 15) chatHistory.shift();
+      sessionStorage.setItem("queryResponses", JSON.stringify(chatHistory));
+      queryResponses.innerHTML = chatHistory.join("");
+    });
+
+    document.querySelector("#clearChatBtn").addEventListener("click", () => {
+      document.querySelector("#queryResponses").innerHTML = "";
+      sessionStorage.removeItem("queryResponses");
+      document.querySelector("#clearChatBtn").classList.add("hidden");
+    });
+  </script>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-column">
+        <h1>Links</h1>
+        <a href="/about">About Us</a>
+        <a href="/contact">Contact Us</a>
+        <a href="/prompts">Prompts</a>
+      </div>
+      <div class="footer-column">
+        <h1>Features</h1>
+        <a href="/">AI Article Writer</a>
+        <a href="/">Blog Generator</a>
+        <a href="/">SEO Optimization</a>
+        <a href="/">Content Planner</a>
+      </div>
+      <div class="footer-column">
+        <h1>Resources</h1>
+        <a href="/">Case Studies</a>
+        <a href="/">Blogs</a>
+        <a href="/">Privacy Policy</a>
+        <a href="/">Terms of Service</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-logo">Intelli-ScrAIb</div>
+      <div class="footer-right">
+        <p>© 2024 IntelliScrAIb. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
