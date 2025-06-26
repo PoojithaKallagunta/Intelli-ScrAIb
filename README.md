@@ -65,30 +65,22 @@ Intelli-ScrAIb/
 
 ## 6. Project Structure Description
 
--**`static/`**    Contains the Tailwind CSS styles used for styling the UI.
+-**`static/`**  Contains the Tailwind CSS styles used for styling the UI.
 
--**`templates/`**  
-  All HTML UI pages rendered by Flask. Includes pages for article generation, about, prompts, and contact.
+-**`templates/`**  All HTML UI pages rendered by Flask. Includes pages for article generation, about, prompts, and contact.
 
--**`index.html`**  
-  Main landing page where the user provides prompt inputs and interacts with the AI.
+-**`index.html`**  Main landing page where the user provides prompt inputs and interacts with the AI.
 
--**`about.html`**  
-  Provides a short description about the project, its purpose, and its vision.
+-**`about.html`**  Provides a short description about the project, its purpose, and its vision.
 
--**`contact.html`**  
-  Displays email and mobile number to reach the development team.
+-**`contact.html`**  Displays email and mobile number to reach the development team.
 
--**`prompts.html`**  
-  Lists suggested categories and prompt formats for article generation.
+-**`prompts.html`**  Lists suggested categories and prompt formats for article generation.
 
--**`main.py`**  
-  Backend logic to serve HTML, handle article generation via Gemini model, and answer queries using context-aware LangChain prompts.
+-**`main.py`**  Backend logic to serve HTML, handle article generation via Gemini model, and answer queries using context-aware LangChain prompts.
 
--**`secret.env`**  
-  Stores the Google Gemini API key securely for backend access.
+-**`secret.env`**  Stores the Google Gemini API key securely for backend access.
 
-```
 
 ## 7. API Endpoints
 
@@ -102,7 +94,6 @@ The Flask backend exposes the following endpoints:
 - `GET /prompts` – Prompt category page
 - `GET /test` – Testing endpoint for Flask server status
 
----
 
 ## 8. Steps to Run the Application
 
