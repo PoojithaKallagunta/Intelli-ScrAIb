@@ -110,4 +110,3 @@ From there:
 4. Ask contextual follow-up questions via **Ask** button under “Ask Questions”.
 5. View responses, or clear the chat with **Clear Chat**.
 
-```
