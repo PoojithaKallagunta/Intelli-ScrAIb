@@ -2,7 +2,7 @@
 
 ## 1. Project Overview 
 
-### **Project Name:** *Intelli-ScrAIb – AI-Powered Content Generator*  
+### **Project Name:** *Intelli-ScrAIb – AI-Powered Article Generator*  
 ### **Description:**  
 Intelli-ScrAIb is an AI-driven article generation and query answering platform that simplifies content creation using natural language prompts. Users can generate articles based on topic, tone, audience, and length. The system integrates LangChain with Google’s Gemini-Flash LLM for smart content generation and contextual Q&A, built with a responsive Flask web interface.
 
